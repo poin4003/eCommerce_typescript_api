@@ -2,6 +2,8 @@ import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
 import compression from "compression";
+import { checkOverLoad } from "./helpers/check.connect";
+import { mongoDBInstance } from "./databases/init.mongodb";
 
 const app = express()
 
@@ -11,6 +13,9 @@ app.use(helmet());
 app.use(compression());
 
 // Init db
+// initMongodb;
+mongoDBInstance();
+checkOverLoad();
 
 // Init routers
 app.get('/', (req, res, next) => {
