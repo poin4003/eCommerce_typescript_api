@@ -4,6 +4,8 @@ import helmet from "helmet";
 import compression from "compression";
 import { checkOverLoad } from "./helpers/check.connect";
 import initMongodb from "./databases/init.mongodb";
+import 'dotenv/config';
+import router from "./routes";
 
 const app = express()
 
@@ -17,14 +19,7 @@ initMongodb;
 // checkOverLoad();
 
 // Init routers
-app.get('/', (req, res, next) => {
-  const strCompress = "Hello world in express"
-
-  return res.status(200).json({
-    message: "Welcome",
-    metadata: strCompress.repeat(100000)
-  });
-});
+app.use('/', router);
 
 // Handling error
 
