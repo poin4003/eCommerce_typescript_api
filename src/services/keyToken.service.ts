@@ -4,11 +4,12 @@ import { CreateKeyTokenParams } from "../interfaces/iparams/iServicePrams/token.
 class KeyTokenService {
 
   static createKeyToken = async (
-    { userId, publicKey}: CreateKeyTokenParams
+    { userId, publicKey, privateKey}: CreateKeyTokenParams
   ): Promise<string | null> => {
     try {
       const tokens = await KeyTokenModel.create({
         user: userId,
+        privateKey: privateKey,
         publicKey: publicKey,
       });
 

@@ -1,8 +1,7 @@
-import { Shop } from "../interfaces/imodels/shop.interface";
 import { SignUpParams } from "../interfaces/iparams/iServicePrams/access.interface";
 import ShopModel from "../models/shop.model";
 import bcrypt from 'bcrypt';
-import crypto, { KeyObject } from 'crypto';
+import crypto from 'crypto';
 import KeyTokenService from "./keyToken.service";
 import { createTokenPair } from "../auth/authUtils";
 import { getInfoData } from "../utils";
@@ -35,24 +34,16 @@ class AccessService {
 
       if (newShop) {
         // Created privateKey and publicKey 
-        const { privateKey, publicKey } = crypto.generateKeyPairSync('rsa', {
-          modulusLength: 4096,
-          publicKeyEncoding: {
-            type: 'pkcs1',
-            format: 'pem',
-          },
-          privateKeyEncoding: {
-            type: 'pkcs1',
-            format: 'pem',
-          },
-        });
+        const privateKey = crypto.randomBytes(32).toString('hex');
+        const publicKey = crypto.randomBytes(32).toString('hex');
 
-        const publicKeyString: string | null = await KeyTokenService.createKeyToken({
+        const keyStore: string | null = await KeyTokenService.createKeyToken({
           userId: newShop._id,
-          publicKey
+          publicKey,
+          privateKey
         });
 
-        if (!publicKeyString) {
+        if (!keyStore) {
           return {
             code: 'xxxx',
             message: 'publicKeyString error!'
@@ -60,10 +51,8 @@ class AccessService {
         }
 
         const tokens = await createTokenPair(
-          { userId: newShop._id, email }, publicKeyString, privateKey
+          { userId: newShop._id, email }, publicKey, privateKey
         );
-
-        console.log(`Created Token successfully::`, tokens);
 
         return {
           code: 201,
