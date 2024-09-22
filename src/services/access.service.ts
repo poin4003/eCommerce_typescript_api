@@ -1,4 +1,4 @@
-import { SignUpParams } from "../interfaces/iparams/iServicePrams/access.interface";
+import { ISignUpParams } from "../interfaces/iparams/iServicePrams/access.interface";
 import ShopModel from "../models/shop.model";
 import bcrypt from 'bcrypt';
 import crypto from 'crypto';
@@ -15,7 +15,7 @@ const RoleShop = {
 
 class AccessService {
 
-  static signUp = async ({ name, email, password }: SignUpParams) => {
+  static signUp = async ({ name, email, password }: ISignUpParams) => {
     try {
       const holderShop = await ShopModel.findOne({ email }).lean();
 

@@ -1,10 +1,10 @@
 import KeyTokenModel from "../models/keytoken.model";
-import { CreateKeyTokenParams } from "../interfaces/iparams/iServicePrams/token.interface";
+import { ICreateKeyTokenParams } from "../interfaces/iparams/iServicePrams/token.interface";
 
 class KeyTokenService {
 
   static createKeyToken = async (
-    { userId, publicKey, privateKey}: CreateKeyTokenParams
+    { userId, publicKey, privateKey}: ICreateKeyTokenParams
   ): Promise<string | null> => {
     try {
       const tokens = await KeyTokenModel.create({

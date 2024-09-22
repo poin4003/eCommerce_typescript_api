@@ -1,6 +1,6 @@
 import lodash from 'lodash';
-import { GetInfoDataParam } from '../interfaces/iparams/iUtilParams/lodash.interface';
+import { IGetInfoDataParam } from '../interfaces/iparams/iUtilParams/lodash.interface';
 
-export const getInfoData = ({ fields = [], object = {} }: GetInfoDataParam) => {
+export const getInfoData = ({ fields = [], object = {} }: IGetInfoDataParam) => {
   return lodash.pick( object, fields );
 }

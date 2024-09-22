@@ -1,4 +1,4 @@
-export interface KeyToken {
+export interface IKeyToken {
   _id: string;
   user: string;
   privateKey: string;

@@ -1,4 +1,4 @@
-export interface Shop {
+export interface IShop {
   _id: string;
   name: string;
   email: string;

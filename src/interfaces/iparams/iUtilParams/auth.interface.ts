@@ -1,3 +1,3 @@
-export interface Payload {
+export interface IPayload {
   [key: string]: any;
 }

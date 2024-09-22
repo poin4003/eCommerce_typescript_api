@@ -1,8 +1,8 @@
 import JWT from 'jsonwebtoken';
-import { Payload } from '../interfaces/iparams/iUtilParams/auth.interface';
+import { IPayload } from '../interfaces/iparams/iUtilParams/auth.interface';
 
 export const createTokenPair = async ( 
-  payload: Payload, 
+  payload: IPayload, 
   publicKey: string, 
   privateKey: string, 
 ): Promise<{ accessToken: string, refreshToken: string } | undefined> => {

@@ -1,5 +1,5 @@
 import mongoose, { model, Schema } from "mongoose";
-import { KeyToken } from "../interfaces/imodels/keytoken.interface";
+import { IKeyToken } from "../interfaces/imodels/keytoken.interface";
 
 const DOCUMENT_NAME = 'Key';
 const COLLECTION_NAME = 'Keys';
@@ -27,6 +27,6 @@ const keyTokenSchema: Schema = new Schema({
   timestamps: true,
 });
 
-const KeyTokenModel = model<KeyToken>(DOCUMENT_NAME, keyTokenSchema);
+const KeyTokenModel = model<IKeyToken>(DOCUMENT_NAME, keyTokenSchema);
 
 export default KeyTokenModel;
