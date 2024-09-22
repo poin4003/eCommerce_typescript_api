@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { Shop } from "../interfaces/shop.interface";
+import { Shop } from "../interfaces/imodels/shop.interface";
 
 const DOCUMENT_NAME = 'Shop';
 const COLLECTION_NAME = 'Shops';
@@ -22,7 +22,7 @@ const shopSchema: Schema = new Schema({
   status: {
     type: String,
     enum: ['active', 'inactive'],
-    default: false,
+    default: 'active',
   },
   verify: {
     type: Schema.Types.Boolean,

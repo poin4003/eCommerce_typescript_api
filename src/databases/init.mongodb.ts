@@ -43,39 +43,4 @@ class MongoDatabase {
 
 export default MongoDatabase.getInstance();
 
-// export function mongoDBInstance() {
-//   let dbInstance: Mongoose | null = null;
 
-//   async function dbConnect(type: string = 'mongodb'): Promise<Mongoose | null> {
-//     if (dbInstance) {
-//       return dbInstance;
-//     }
-
-//     try {
-//       if (type === 'mongodb') {
-//         mongoose.set('debug', true);
-//         mongoose.set('debug', { color: true });
-
-//         dbInstance = await mongoose.connect(connectString, {
-//           maxPoolSize: 50
-//         });
-
-//         console.log(`Connected to MongoDB successfully`, countConnect());
-//       }
-
-//       return dbInstance;
-//     } catch (err) {
-//       console.error(`Error connecting to MongoDB: `, err);
-//       return null;
-//     }
-//   }
-
-//   return {
-//     getConnection: async (type: string = 'mongodb'): Promise<Mongoose | null> => {
-//       if (!dbInstance) {
-//         await dbConnect(type);
-//       }
-//       return dbInstance;
-//     }
-//   };
-// }
